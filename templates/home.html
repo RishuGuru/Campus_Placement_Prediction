@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>Home</title>
+  </head>
+  <body>
+    <h3 style="text-align: center;">Welcome to our page Here you will get you future that you will get placed or not</h3>
+    <h3 style="text-align: center;">that you will get placed or not</h3>
+<!-- ['ssc_p', 'hsc_p', 'degree_p', 'etest_p', 'mba_p', 'gender_M',
+       'ssc_b_Central', 'hsc_b_Central', 'hsc_s_Arts', 'hsc_s_Commerce',
+       'hsc_s_Science', 'degree_t_Comm&Mgmt', 'degree_t_Others',
+       'degree_t_Sci&Tech', 'workex_Yes', 'specialisation_Mkt&Fin',
+       'specialisation_Mkt&HR']-->
+    
+    <h2 style="text-align: center;color: blue;"> Your ressult is {{ message }}</h2>
+    
+<div class="container-sm">
+    <form action="{% url 'home' %}" method="POST">{% csrf_token %}
+    <table border="2">
+        <tr>
+            <td>
+                ssc_p
+            </td>
+            <td>
+                <input name='ssc_p' type="number">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                hsc_p
+            </td>
+            <td>
+                <input name="hsc_p" type="number">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                degree_p
+            </td>
+            <td>
+                <input name="degree_p" type="number">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                etest_p
+            </td>
+            <td>
+                <input name="etest_p" type="number">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                mba_p
+            </td>
+            <td>
+                <input name="mba_p" type="number">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Gender
+            </td>
+            <td>
+                <select name="gender_M" type="number">
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                10th Board of Education 
+            </td>
+            <td>
+                <select name="ssc_b_Central" type="number">
+                    <option value="1">Central</option>
+                    <option value="0">others</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                12th Board of Education 
+            </td>
+            <td>
+                <select name="hsc_b_Central" type="number">
+                    <option value="1">Central</option>
+                    <option value="0">others</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Specialization in Higher Secondary Education (Art)
+            </td>
+            <td>
+                <input name="hsc_s_Arts" type="checkbox">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Specialization in Higher Secondary Education (Commerce)
+            </td>
+            <td>
+                <input name="hsc_s_Commerce" type="checkbox">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Specialization in Higher Secondary Education (Science)
+            </td>
+            <td>
+                <input name="hsc_s_Science" type="checkbox">
+            </td>
+        </tr>
+        <!-- ['ssc_p', 'hsc_p', 'degree_p', 'etest_p', 'mba_p', 'gender_M',
+       'ssc_b_Central', 'hsc_b_Central', 'hsc_s_Arts', 'hsc_s_Commerce',
+       'hsc_s_Science', 'degree_t_Comm&Mgmt', 'degree_t_Others',
+       'degree_t_Sci&Tech', 'workex_Yes', 'specialisation_Mkt&Fin',
+       'specialisation_Mkt&HR']-->
+        <tr>
+            <td>
+                Specialization in Degree (Commerce & managemnt)
+            </td>
+            <td>
+                <input name="degree_t_Comm&Mgmt" type="checkbox">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Specialization in Degree (Others)
+            </td>
+            <td>
+                <input name="degree_t_Others" type="checkbox">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Specialization in Degree (Science & Technology)
+            </td>
+            <td>
+                <input name="degree_t_Sci&Tech" type="checkbox">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Work Experience
+            </td>
+            <td>
+                <select name="workex_Yes" type="number">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Post Graduation(MBA)- Specialization (Marketting and finance)
+            </td>
+            <td>
+                <input name="specialisation_Mkt&Fin" type="checkbox">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Post Graduation(MBA)- Specialization (Marketting and HR)
+            </td>
+            <td>
+                <input name="specialisation_Mkt&HR" type="checkbox">
+            </td>
+        </tr>
+    </table>
+    <button class="btn btn-success" style="text-align: center;">Submit</button>  
+</form>
+</div>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
