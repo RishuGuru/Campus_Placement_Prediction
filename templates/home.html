@@ -7,61 +7,71 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
+    <style>
+        body {
+          background-color: #5e5e61;
+        }
+        </style>
     <title>Home</title>
   </head>
   <body>
-    <h3 style="text-align: center;">Welcome to our page Here you will get you future that you will get placed or not</h3>
-    <h3 style="text-align: center;">that you will get placed or not</h3>
+      <br>
+    <h3 style="text-align: center;color: rgb(255, 255, 255);">Welcome To Our Page</h3>
+    <p style="text-align: center;color: rgb(255, 255, 255);">Please fill below details to genrate your placement report</p>
 <!-- ['ssc_p', 'hsc_p', 'degree_p', 'etest_p', 'mba_p', 'gender_M',
        'ssc_b_Central', 'hsc_b_Central', 'hsc_s_Arts', 'hsc_s_Commerce',
        'hsc_s_Science', 'degree_t_Comm&Mgmt', 'degree_t_Others',
        'degree_t_Sci&Tech', 'workex_Yes', 'specialisation_Mkt&Fin',
        'specialisation_Mkt&HR']-->
+    {% if message == 0 %}     
     
-    <h2 style="text-align: center;color: blue;"> Your ressult is {{ message }}</h2>
-    
+    <h3 style="text-align: center;color:darkorange;font-style: oblique;"> Sorry You will not get compus placement </h3>
+    <br>
+    {% elif message == 1  %}
+    <h3 style="text-align: center;color:rgb(0, 255, 55);font-style: oblique;"> Congratulation You will get campus placment </h3>
+    <br>
+    {% endif %}
 <div class="container-sm">
     <form action="{% url 'home' %}" method="POST">{% csrf_token %}
-    <table border="2">
-        <tr>
-            <td>
-                ssc_p
+    <table class= 'table table-dark table-striped'>
+        <tr colspan="2">
+            <td >
+                Secondary Education Percentage
             </td>
             <td>
-                <input name='ssc_p' type="number">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                hsc_p
-            </td>
-            <td>
-                <input name="hsc_p" type="number">
+                <input name='ssc_p' required="True" type="number" min="0" max="100" style="width: 50%;">
             </td>
         </tr>
         <tr>
             <td>
-                degree_p
+                Higher Secondary Education Percentage
             </td>
             <td>
-                <input name="degree_p" type="number">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                etest_p
-            </td>
-            <td>
-                <input name="etest_p" type="number">
+                <input name="hsc_p" required="True" type="number" min="0" max="100" style="width: 50%;">
             </td>
         </tr>
         <tr>
             <td>
-                mba_p
+                Degree Percentage
             </td>
             <td>
-                <input name="mba_p" type="number">
+                <input name="degree_p" required="True" type="number" min="0" max="100" style="width: 50%;">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Employability Test Percentage
+            </td>
+            <td>
+                <input name="etest_p" required="True" type="number" min="0" max="100" style="width: 50%;">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                MBA Percentage
+            </td>
+            <td>
+                <input name="mba_p" required="True" type="number" min="0" max="100" style="width: 50%;">
             </td>
         </tr>
         <tr>
@@ -69,7 +79,7 @@
                 Gender
             </td>
             <td>
-                <select name="gender_M" type="number">
+                <select name="gender_M" type="number" style="width: 50%;">
                     <option value="1">Male</option>
                     <option value="0">Female</option>
                 </select>
@@ -78,10 +88,10 @@
 
         <tr>
             <td>
-                10th Board of Education 
+                Secondary Board of Education 
             </td>
             <td>
-                <select name="ssc_b_Central" type="number">
+                <select name="ssc_b_Central" type="number" style="width: 50%;">
                     <option value="1">Central</option>
                     <option value="0">others</option>
                 </select>
@@ -89,10 +99,10 @@
         </tr>
         <tr>
             <td>
-                12th Board of Education 
+                Higher Board of Education 
             </td>
             <td>
-                <select name="hsc_b_Central" type="number">
+                <select name="hsc_b_Central" type="number" style="width: 50%;">
                     <option value="1">Central</option>
                     <option value="0">others</option>
                 </select>
@@ -100,13 +110,25 @@
         </tr>
         <tr>
             <td>
-                Specialization in Higher Secondary Education (Art)
+                Specialization in Higher Secondary Education
             </td>
             <td>
-                <input name="hsc_s_Arts" type="checkbox">
+                <input class="form-check-input" type="radio" name="shs_D" id="exampleRadios1" value="A" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Art        
+                </label>
+                <input class="form-check-input" type="radio" name="shs_D" id="exampleRadios1" value="C" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Commerce        
+                </label>
+                <input class="form-check-input" type="radio" name="shs_D" id="exampleRadios1" value="S" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Science        
+                </label>             
+                
             </td>
         </tr>
-        <tr>
+        <!--<tr>
             <td>
                 Specialization in Higher Secondary Education (Commerce)
             </td>
@@ -121,7 +143,7 @@
             <td>
                 <input name="hsc_s_Science" type="checkbox">
             </td>
-        </tr>
+        </tr>-->
         <!-- ['ssc_p', 'hsc_p', 'degree_p', 'etest_p', 'mba_p', 'gender_M',
        'ssc_b_Central', 'hsc_b_Central', 'hsc_s_Arts', 'hsc_s_Commerce',
        'hsc_s_Science', 'degree_t_Comm&Mgmt', 'degree_t_Others',
@@ -129,13 +151,24 @@
        'specialisation_Mkt&HR']-->
         <tr>
             <td>
-                Specialization in Degree (Commerce & managemnt)
+                Specialization in Degree 
             </td>
             <td>
-                <input name="degree_t_Comm&Mgmt" type="checkbox">
+                <input class="form-check-input" type="radio" name="degree" id="exampleRadios1" value="CM" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Commerce & managemnt 
+                </label>
+                <input class="form-check-input" type="radio" name="degree" id="exampleRadios1" value="ST" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Science & Technology
+                </label>
+                <input class="form-check-input" type="radio" name="degree" id="exampleRadios1" value="O" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Others
+                </label>  
             </td>
         </tr>
-        <tr>
+        <!--<tr>
             <td>
                 Specialization in Degree (Others)
             </td>
@@ -150,13 +183,13 @@
             <td>
                 <input name="degree_t_Sci&Tech" type="checkbox">
             </td>
-        </tr>
+        </tr> -->
         <tr>
             <td>
                 Work Experience
             </td>
             <td>
-                <select name="workex_Yes" type="number">
+                <select name="workex_Yes" type="number" style="width: 50%;">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
                 </select>
@@ -164,22 +197,31 @@
         </tr>
         <tr>
             <td>
-                Post Graduation(MBA)- Specialization (Marketting and finance)
+                Post Graduation(MBA)- Specialization
             </td>
             <td>
-                <input name="specialisation_Mkt&Fin" type="checkbox">
+                <input class="form-check-input" type="radio" name="Specialization" id="exampleRadios1" value="MF" checked>                
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Marketting and finance 
+                </label>
+                <input class="form-check-input" type="radio" name="Specialization" id="exampleRadios1" value="MH" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Marketting and HR
+                </label>
             </td>
         </tr>
-        <tr>
+        <!--<tr>
             <td>
                 Post Graduation(MBA)- Specialization (Marketting and HR)
             </td>
             <td>
                 <input name="specialisation_Mkt&HR" type="checkbox">
             </td>
-        </tr>
+        </tr>-->
     </table>
-    <button class="btn btn-success" style="text-align: center;">Submit</button>  
+    <div style="text-align: center;">
+        <button class="btn btn-outline-warning">Submit</button>  
+    </div>
 </form>
 </div>
 <br>

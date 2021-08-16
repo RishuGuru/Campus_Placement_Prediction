@@ -26,27 +26,43 @@ def home(request):
         gender_M = request.POST.get('gender_M')
         ssc_b_Central = request.POST.get('ssc_b_Central')
         hsc_b_Central = request.POST.get('hsc_b_Central')
-        hsc_s_Arts = request.POST.get('hsc_s_Arts')
-        hsc_s_Arts = convert(hsc_s_Arts)
-
-        hsc_s_Commerce = request.POST.get('hsc_s_Commerce')
-        hsc_s_Commerce = convert(hsc_s_Commerce)
-
-        hsc_s_Science = request.POST.get('hsc_s_Science')
-        hsc_s_Science = convert(hsc_s_Science)
-
-        degree_t_Comm_Mgmt = request.POST.get('degree_t_Comm&Mgmt')
-        degree_t_Comm_Mgmt = convert(degree_t_Comm_Mgmt)
-        degree_t_Others = request.POST.get('degree_t_Others')
-        degree_t_Others = convert(degree_t_Others)
-        degree_t_Sci_Tech = request.POST.get('degree_t_Sci&Tech')
-        degree_t_Sci_Tech = convert(degree_t_Sci_Tech)
+        hsc_s_D = request.POST.get('shs_D')
+        if hsc_s_D =='A':
+            hsc_s_Arts = 1
+            hsc_s_Commerce = 0
+            hsc_s_Science = 0
+        elif hsc_s_D =='C':
+            hsc_s_Arts = 0
+            hsc_s_Commerce = 1
+            hsc_s_Science = 0
+        else:
+            hsc_s_Arts = 0
+            hsc_s_Commerce = 0
+            hsc_s_Science = 1
+        degree = request.POST.get('degree')
+        if degree =='CM':
+            degree_t_Comm_Mgmt = 1
+            degree_t_Others = 0
+            degree_t_Sci_Tech = 0
+        elif degree =='ST':
+            degree_t_Comm_Mgmt = 0
+            degree_t_Others = 0
+            degree_t_Sci_Tech = 1
+        else:
+            degree_t_Comm_Mgmt = 0
+            degree_t_Others = 1
+            degree_t_Sci_Tech = 0
         workex_Yes = request.POST.get('workex_Yes')
-        specialisation_Mkt_Fin = request.POST.get('specialisation_Mkt&Fin')
-        specialisation_Mkt_Fin = convert(specialisation_Mkt_Fin)
-
-        specialisation_Mkt_HR = request.POST.get('specialisation_Mkt&HR')
-        specialisation_Mkt_HR = convert(specialisation_Mkt_HR)
+        Specialization = request.POST.get('Specialization')
+        if Specialization== "MF":
+            specialisation_Mkt_Fin = 1
+            specialisation_Mkt_HR = 0
+        elif Specialization== "MF":
+            specialisation_Mkt_Fin = 1
+            specialisation_Mkt_HR = 0
+        else:
+            specialisation_Mkt_Fin = 0
+            specialisation_Mkt_HR = 0
         # print(ssc_p,hsc_p,degree_p,etest_p,mba_p,gender_M,ssc_b_Central,
         # hsc_b_Central,hsc_s_Arts,hsc_s_Commerce,hsc_s_Science,degree_t_Comm_Mgmt,
         # degree_t_Others,degree_t_Sci_Tech,workex_Yes,specialisation_Mkt_Fin,specialisation_Mkt_HR)
@@ -57,9 +73,6 @@ def home(request):
                         columns=col_name)
 
         pred = model.predict(xyz)
-        if pred[0]==0:
-            message = 'Not Placed'
-        else:
-            message = 'Placed'
-        return render(request,"home.html",{"message":message})
+        
+        return render(request,"home.html",{'message':pred[0]})
         
