@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-iyd#e=i8!3ep@wlu07b&!hs90&0d&1d@=s83y$3hwb#dfblenh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['placementpred.herokuapp.com']
+ALLOWED_HOSTS = ["placementpred.herokuapp.com"]
 
 
 # Application definition
@@ -48,9 +48,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-
 ]
 
 ROOT_URLCONF = 'placement.urls'

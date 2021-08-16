@@ -15,7 +15,9 @@ def home(request):
        'hsc_s_Science', 'degree_t_Comm&Mgmt', 'degree_t_Others',
        'degree_t_Sci&Tech', 'workex_Yes', 'specialisation_Mkt&Fin',
        'specialisation_Mkt&HR']
-    if request.method =='POST':
+    if request.method =='GET':
+        return render(request,"home.html")        
+    else:
         ssc_p = request.POST.get('ssc_p')
         hsc_p = request.POST.get('hsc_p')
         degree_p = request.POST.get('degree_p')
@@ -60,5 +62,4 @@ def home(request):
         else:
             message = 'Placed'
         return render(request,"home.html",{"message":message})
-    else:
-        return render(request,"home.html")
+        
